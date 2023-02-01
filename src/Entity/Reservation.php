@@ -51,7 +51,7 @@ class Reservation
 
     public function __construct()
     {
-        $this->Client = new ArrayCollection();
+        $this->name = new ArrayCollection();
     }
 
     public function getId(): ?int
