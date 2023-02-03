@@ -14,6 +14,9 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Quattrocento&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
             <script src="{{ asset('scripts/bootstrap.bundle.min.js') }}" defer></script>
             <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
@@ -29,32 +32,32 @@
     <body>
     {% block header %}
         <nav class="navbar navbar-expand-lg one">
-            <div class="container-fluid one">
+            <div class="container-fluid">
                 <a class="navbar-brand" href="/">Quai-Antique</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item one">
+                        <li class="nav-item ">
                             <a class="nav-link one" aria-current="page" href="/">Accueil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link one" href="/menu">Menu</a>
                         </li>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <li class="nav-item">
-                                <a class="nav-link one" aria-current="page" href="#">Publier</a>
-
-                            </li>
-                        {% endif %}
+                        <li class"nav-item">
+                       {#} {% set url = ea_url()
+                            .setController('App\\Controller\\Admin\\ProductCrudController')
+                            .setAction('index') %}#}
+                            <a class"nav-link" href="/admin">admin</a>
+                        </li>
                     </ul>
-                    <form class="d-flex" method="POST">
+                    {# <form class="d-flex" method="POST">
                         <input class="form-control me-2" type="search" placeholder="Rechercher" name="search" aria-label="Search">
                         <button class="btn btn-outline-primary" type="submit">
-                            <i class="fa-light fa-magnifying-glass"></i>
+                    <i class="fa-light fa-magnifying-glass"></i> 
                         </button>
-                    </form>
+                    </form>#}
                     {# verifie si l'utilisateur est conecter #}
                     {% if app.user %}
                         Bienvenue<br>
@@ -62,7 +65,8 @@
                         <a href="/logout">Se déconnecter</a>
                     {% else %}
                         <a href="/login">Se connecter</a>
-                    {% endif %}
+                    {% endif %}           
+                    
                 </div>
             </div>
         </nav>
