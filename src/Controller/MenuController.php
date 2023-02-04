@@ -3,14 +3,14 @@
 namespace App\Controller;
 use App\Repository\MenuRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MenuController extends AbstractController
 {
     #[Route( '/menu', name: 'menu')]
-    public function menu(Request $request, MenuRepository $repository): Response
+    public function menu( MenuRepository $repository): Response
     {
       //  $search = $request->request->get("search"); // $_MENU["search"]
       //  $menu = $repository->findAll(); // SELECT * FROM `menu`;
