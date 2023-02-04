@@ -4,19 +4,13 @@
 
 {% block body %}
     <div class=" container-fluid">
-    {% for menu in menus %}
-    {{ menu.title }}
-    
+    {% for menu in menus %} 
         <div class="menu">
-          {% if menu.title %}
+            {% if menu.title %}
             <h2 class="menu-group-heading">{{ menu.title }}
                 
-                <pre>
-                    {{ dump( menu) }}
-                </pre>
             </h2>
             {% endif %}
-          
             <div class="menu-group">
                 <div class="menu-item">
                     <img class="menu-item-image" src="{{ asset('uploads/plat1.jpg') }}" alt="Bruschetta">
@@ -29,7 +23,7 @@
                         {% endif %}
                         {% if menu.description %}
                         <p class="menu-item-description">
-                           {{ menu.description }}
+                            {{ menu.description }}
                         </p>
                         {% endif %}
                     </div>
