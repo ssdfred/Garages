@@ -4,22 +4,34 @@
 
 {% block body %}
     <div class=" container-fluid">
+    {% for menu in menus %}
+    {{ menu.title }}
+    
         <div class="menu">
-            <h2 class="menu-group-heading">
-                Entrée
+          {% if menu.title %}
+            <h2 class="menu-group-heading">{{ menu.title }}
+                
+                <pre>
+                    {{ dump( menu) }}
+                </pre>
             </h2>
+            {% endif %}
+          
             <div class="menu-group">
                 <div class="menu-item">
                     <img class="menu-item-image" src="{{ asset('uploads/plat1.jpg') }}" alt="Bruschetta">
                     <div class="menu-item-text">
                         <h3 class="menu-item-heading">
                             <span class="menu-item-name">Bruschetta</span>
-                            <span class="menu-item-price">$12.90</span>
+                            {% if menu.price %}
+                            <span class="menu-item-price">{{ menu.price }}€</span>
                         </h3>
+                        {% endif %}
+                        {% if menu.description %}
                         <p class="menu-item-description">
-                            Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
-                            congue eu mauris nec, pretium tincidunt nulla.
+                           {{ menu.description }}
                         </p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="menu-item">
@@ -28,7 +40,7 @@
                         <h3 class="menu-item-heading">
 
                             <span class="menu-item-name">menu</span>
-                            <span class="menu-item-price">$12.90</span>
+                            <span class="menu-item-price">12.90€</span>
                         </h3>
                         <p class="menu-item-description">
                             Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
@@ -47,7 +59,7 @@
                     <div class="menu-item-text">
                         <h3 class="menu-item-heading">
                             <span class="menu-item-name">Bruschetta</span>
-                            <span class="menu-item-price">$12.90</span>
+                            <span class="menu-item-price">12.90€</span>
                         </h3>
                         <p class="menu-item-description">
                             Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
@@ -60,7 +72,7 @@
                     <div class="menu-item-text">
                         <h3 class="menu-item-heading">
                             <span class="menu-item-name">Bruschetta</span>
-                            <span class="menu-item-price">$12.90</span>
+                            <span class="menu-item-price">12.90E</span>
                         </h3>
                         <p class="menu-item-description">
                             Nunc efficitur felis vel mi efficitur, sed molestie sem scelerisque. Fusce orci risus,
@@ -71,4 +83,5 @@
             </div>
         </div>
     </div>
+ {% endfor %} 
 {% endblock %}

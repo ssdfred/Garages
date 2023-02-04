@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 use App\Entity\Horaire;
 use App\Entity\Menu;
+use App\Entity\Reservation;
+use App\Entity\Restaurant;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -68,6 +70,16 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::subMenu('Utilisateur', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Create utilisateur','fas fa-plus', User::class )->setAction(Crud::PAGE_NEW),
             MenuItem::linkToCrud('Show utilsateur', 'fas fa-eye', User::class )
+        ]);
+
+        yield MenuItem::subMenu('Restaurant', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Create restaurant','fas fa-plus', Restaurant::class )->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Show restaurant', 'fas fa-eye', Restaurant::class )
+        ]);
+
+        yield MenuItem::subMenu('Reservation', 'fas fa-bars')->setSubItems([
+            MenuItem::linkToCrud('Create reservation','fas fa-plus', Reservation::class )->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Show reservation', 'fas fa-eye', Reservation::class )
         ]);
     }
 }

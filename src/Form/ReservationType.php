@@ -2,12 +2,14 @@
 namespace App\Form;
 
 
-use App\Entity\Client;
+use App\Entity\Reservation;
+
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 class ReservationType extends AbstractType
 {
@@ -17,19 +19,31 @@ class ReservationType extends AbstractType
             ->add("name", TextType::class, [
                 "label" => "votre nom",
                 "required" => true,
-                "constraints" => [
-                    new NotBlank(["message" => "Le nom ne doit pas etre vide"])
-                ]
+            
             ])
             ->add("nb_personnes", TextType::class, [
                 "label" => "veuillez indiqué le nombre de personnes",
                     "required" => true,
-                    "constraints" => [
-                        new NotBlank(["Le nombre de personnes est obligatoire"])
-                    ]
-                ]);
+                  
+                ])
+                ->add("Date", DateTimeType::class, [
+                    "label" => "veuillez indiqué le nombre de personnes",
+                        "required" => true,
+                     
+                    ])
+                    ->add("reservation_heure", DateTimeType::class, [
+                        "label" => "veuillez indiqué les heures",
+                            "required" => true,
+                        
+                            ])
+                            ->add('allergie');
     }
-
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setDefaults([
+            'data_class' => Reservation::class,
+        ]);
+    }
 
 }
 
