@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Reservation;
 use App\Form\ReservationType;
+use Doctrine\DBAL\Types\DateTimeType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,6 +28,7 @@ class ReservationController extends AbstractController
         }
         return $this->render('reservation/index.html.twig', [
             "form" => $form->createView(),
+
         ]);
     }
 }
