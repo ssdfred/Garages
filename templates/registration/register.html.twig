@@ -15,7 +15,10 @@
     {{ form_row(form.email) }}
     {{ form_row(form.password) }}
     {{ form_row(form.confirm) }}
+    {{ form_rest(form) }}
+    {{ dump(form) }}
     <input class="btn btn-success mt-2" type="submit" value="Créer le compte">
 
-    
+
+
 {% endblock %}
