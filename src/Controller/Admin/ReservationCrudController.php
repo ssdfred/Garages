@@ -3,8 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
-use DateTime;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -18,7 +17,7 @@ class ReservationCrudController extends AbstractCrudController
     }
 
     
-    public function configureFields(string $pageName): iterable
+/*    public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
@@ -30,5 +29,5 @@ class ReservationCrudController extends AbstractCrudController
     }
 
 
-
+*/
 }

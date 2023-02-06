@@ -5,12 +5,12 @@ namespace App\Form;
 use App\Entity\Reservation;
 
 
-use DateTime;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+
 
 class ReservationType extends AbstractType
 {
@@ -27,12 +27,12 @@ class ReservationType extends AbstractType
                     "required" => true,
                   
                 ])
-                ->add("Date", DateTime::class, [
+                ->add("Date", \DateTimeInterface::class, [
                     "label" => "veuillez indiqué le nombre de personnes",
                         "required" => true,
                      
                     ])
-                    ->add("reservation_heure", DateTime::class, [
+                    ->add("reservation_heure", \DateTimeInterface::class, [
                         "label" => "veuillez indiqué les heures",
                             "required" => true,
                         

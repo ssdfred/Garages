@@ -27,8 +27,6 @@ class UserController extends AbstractController
             $em = $doctrine->getManager();
             $em->persist($user);
             $em->flush();
-            $request->server->get('HTTP_POST');
-
 
             return $this->redirectToRoute("accueil");
 
