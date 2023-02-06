@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Reservation;
+use DateTime;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
@@ -23,9 +24,11 @@ class ReservationCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             Field::new('name'),
             Field::new('nb_personnes', label: 'nombre de personnes'),
-            DateTimeType::new('date'),
-            DateTimeType::new('eservation_heure')
+            Field::new( 'date'),
+            Field::new('reservation_heure')
         ];
     }
-    
+
+
+
 }

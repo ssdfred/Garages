@@ -1,6 +1,6 @@
 body {
     background-color: #F9F6F0;
-    font-family: 'Quattrocento', sherif;
+    font-family: 'Quattrocento', sherif, serif;
 
 }
 
@@ -29,24 +29,26 @@ h5.card-title {
     font-family: "Inter", sans-serif;
     font-size: 14px;
 
+
 }
 
 
 .menu-group-heading {
     margin: 0;
     padding-bottom: 1em;
-    border-bottom: 2px solid #C4AE78;
+    border-bottom: 2px solid #7c5f24;
 }
 
 .menu-group {
     display: grid;
-    grid-template-columns: 1fr;
+ /*   grid-template-columns: 1fr;*/
     gap: 1.5em;
     padding: 1.5em 0;
 }
 
 .menu-item {
     display: flex;
+
     background-color: #F9F6F0;
 }
 
