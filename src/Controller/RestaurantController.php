@@ -33,7 +33,10 @@ class RestaurantController extends AbstractController
         return $this->render('restaurant/index.html.twig', [
             'controller_name' => 'RestaurantController',
         ]);
+
+
     }
+
 /*
    #[Route('/menu/new')]
     public function create(Request $request, ManagerRegistry $doctrine, SluggerInterface $slugger): Response

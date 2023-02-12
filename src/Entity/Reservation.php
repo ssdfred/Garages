@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Date;
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -25,10 +26,10 @@ class Reservation
     private ?int $nb_personnes = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date = null;
+    private ?Date $date = null;
 
     #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $reservation_heure = null;
+    private ?Date $reservation_heure = null;
 
     /**
      * @return \DateTimeInterface|null

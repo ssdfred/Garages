@@ -3,28 +3,66 @@
 {% block title %}Hello ReservationController!{% endblock %}
 
 {% block body %}
-<form>
+<form action="{{ path('reservation') }}" method="post">
     <div class="form-row">
         <div class="col-md-4 mb-3">
             <label for="validationDefault01">Nom</label>
-            <input type="text" class="form-control" id="name" value="" required>
+            <input type="text" class="form-control"  id="validationDefault01"value="" required>
         </div>
-        <div class="col-md-4 mb-3">
-            <label for="validationDefault02">Nombre de personnes</label>
-            <input type="text" class="form-control" id="validationDefault02" value="" required>
+        <div >
+            <label for="validationDefault02">Midi</label>
         </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start" >
 
-    </div>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1">12H15</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2">12h30</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3">12h45</label>
+
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio4" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio4">13h00</label>
+            </div>
+
+            </div>
+
+        <div >
+            <label for="validationDefault02">Soir</label>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio5" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio5">18H15</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio6" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio6">18h30</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio7" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio7">18h45</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="heure" autocomplete="off">
+            <label class="btn btn-outline-primary" for="heure">19h00</label>
+        </div>
+        </div>
     <div class="form-row">
         <div class="col-md-6 mb-3">
             <label for="validationDefault03">Date</label>
-            <input type="text" class="form-control" id="validationDefault03" required>
+            <input  type="date" />
+
         </div>
         <div class="col-md-3 mb-3">
-            <label for="validationDefault04">Heure</label>
-            <select class="custom-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
+            <label for="validationDefault04">Nombre de couvert</label>
+            <select class="custom-select" id="place" required>
+                <option disabled>Nombre de couvert</option>
+                <option>1 couvert</option>
+                <option>2 couvert</option>
+                <option>3 couvert</option>
+                <option>4 couvert</option>
+                <option>5 couvert</option>
             </select>
         </div>
         <div class="col-md-3 mb-3">
@@ -42,4 +80,5 @@
     </div>
     <button class="btn btn-primary" type="submit">Submit form</button>
 </form>
-{% endblock %}
+
+{%  endblock %}

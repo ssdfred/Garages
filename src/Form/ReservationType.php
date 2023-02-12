@@ -6,6 +6,7 @@ use App\Entity\Reservation;
 
 
 use Container7ozhulI\getFieldCollectionService;
+use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,8 +31,8 @@ class ReservationType extends AbstractType
                     "required" => true,
                   
                 ])
-                ->add("Date", textType::class, [
-                    "label" => "veuillez indiqué le nombre de personnes",
+                ->add("Date", TextType::class, [
+                    "label" => "Date de reservation",
                         "required" => true,
                      
                     ])
@@ -40,7 +41,10 @@ class ReservationType extends AbstractType
                             "required" => true,
                         
                             ])
-                            ->add('allergie');
+                    ->add('allergie', TextType::class, [
+                        "label" => "Allergies",
+                        "required" => false,
+        ]);
     }
     public function configureOptions(OptionsResolver $resolver): void
     {

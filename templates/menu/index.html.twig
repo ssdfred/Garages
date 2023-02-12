@@ -22,7 +22,7 @@
                                 <span class="menu-item-name">{{ menu.title }}</span>
                                 {%  endif %}
                                 {% if menu.price %}
-                                <span class="menu-item-price">{{ menu.price }}€</span>
+                                <span class="menu-item-price">{{ menu.price / 100}}€</span>
                             </h3>
                             {% endif %}
                             {% if menu.description %}

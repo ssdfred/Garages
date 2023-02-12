@@ -10,9 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 
 
@@ -67,10 +67,10 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Show horaires', 'fas fa-eye', Horaire::class )
         ]);
 
-        yield MenuItem::subMenu('Utilisateur', 'fas fa-bars')->setSubItems([
-            MenuItem::linkToCrud('Create utilisateur','fas fa-plus', User::class )->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Show utilsateur', 'fas fa-eye', User::class )
-        ]);
+       //yield MenuItem::subMenu('Utilisateur', 'fas fa-bars')->setSubItems([
+       //    MenuItem::linkToCrud('Create utilisateur','fas fa-plus', User::class )->setAction(Crud::PAGE_NEW),
+       //    MenuItem::linkToCrud('Show utilsateur', 'fas fa-eye', User::class )
+       //]);
 
         yield MenuItem::subMenu('Restaurant', 'fas fa-bars')->setSubItems([
             MenuItem::linkToCrud('Create restaurant','fas fa-plus', Restaurant::class )->setAction(Crud::PAGE_NEW),

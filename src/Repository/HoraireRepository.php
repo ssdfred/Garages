@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Horaire;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,7 @@ class HoraireRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
 }
+//$date = new DateTimeImmutable('date');
+//echo $date->format('Y-m-d');

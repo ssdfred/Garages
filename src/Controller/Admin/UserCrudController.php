@@ -34,7 +34,7 @@ class UserCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('restaurant'),
+            AssociationField::new('restaurant','restaurant'),
             Field::new('password')->hideOnForm(),
             yield ChoiceField::new('role')->setChoices([
                 'Admin' => 'ROLE_ADMIN',
