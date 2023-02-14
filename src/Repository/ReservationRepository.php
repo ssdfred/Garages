@@ -39,20 +39,20 @@ class ReservationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Reservation[] Returns an array of Reservation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('r')
-//            ->andWhere('r.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('r.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+  /**
+   * @return Reservation[] Returns an array of Reservation objects
+   */
+  public function findByReservationField($value): array
+  {
+      return $this->createQueryBuilder('r')
+          ->andWhere('r.reservationField = :val')
+          ->setParameter('val', $value)
+          ->orderBy('r.nb_personnes', 'ASC')
+          ->setMaxResults(10)
+          ->getQuery()
+          ->getResult()
+      ;
+  }
 
 //    public function findOneBySomeField($value): ?Reservation
 //    {

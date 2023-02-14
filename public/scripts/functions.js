@@ -9,3 +9,6 @@ const togglePassword = () => {
     eyeSlashIcon.classList.contains("d-none") ? eyeSlashIcon.classList.remove("d-none") : eyeSlashIcon.classList.add("d-none")
 }
 
+
+
+

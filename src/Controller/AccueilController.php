@@ -23,23 +23,4 @@ class AccueilController extends AbstractController
         
     }
 
-    #[Route('/reservation', name: 'reservation')]
-    public function new(Request $request, Reservation $reservation, ManagerRegistry $doctrine): Response
-    {
-        $reservation = new Reservation($reservation);
-        $form = $this->createForm(ReservationType::class, $reservation);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $doctrine->getManager();
-            $em->persist($reservation);
-            $em->flush();
-            return $this->redirectToRoute('accueil');
-        }
-        return $this->render('reservations/form.html.twig', [
-            "form" => $form->createView(),
-        ]);
-    }
-
-
-
 }
