@@ -18,7 +18,7 @@ class ReservationController extends AbstractController
     public function reservation(Request $request, ManagerRegistry $doctrine): Response
     {
         $reservation = new Reservation();
-        $form = $this->createForm(ReservationType::class);
+        $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $doctrine->getManager();
