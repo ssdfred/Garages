@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Menu;
-use DateTimeInterface;
+use App\Service\ReservationService;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -23,6 +23,12 @@ use Symfony\Component\Validator\Constraints\DivisibleBy;
 
 class MenuCrudController extends AbstractCrudController
 {
+    private ReservationService $reservationService;
+
+    public function __construct(ReservationService $reservationService)
+    {
+        $this->reservationService = $reservationService;
+    }
     public const ACTION_DUPLICATE = 'duplicate';
     public const  MENU_BASE_PATH = 'uploads/menu';
     public const  MENU_UPLOAD_DIR = 'public/uploads/menu';

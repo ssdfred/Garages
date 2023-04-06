@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <div class="container">
+    <h1 class="my-4">{{ reservation.getNom() }}</h1>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">{{ reservation.getDescription() }}</p>
+        <p class="card-text"><strong>Date :</strong> {{ reservation.getDate()|date('d/m/Y H:i') }}</p>
+        <p class="card-text"><strong>Prix :</strong> {{ reservation.getPrix() }} €</p>
+        <p class="card-text"><strong>Places restantes :</strong> {{ placesRestantes[reservation.getId()] }}</p>
+        <a href="{{ path('reservation_edit', {'id': reservation.getId()}) }}" class="btn btn-primary">Modifier</a>
+        {{ form_start(deleteForm) }}
+        <button type="submit" class="btn btn-danger">Supprimer</button>
+        {{ form_end(deleteForm) }}
+        <a href="{{ path('reservation_index') }}" class="btn btn-secondary">Retour</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

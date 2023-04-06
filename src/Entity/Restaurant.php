@@ -29,16 +29,7 @@ class Restaurant
     private Collection $users;
 
     #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Menu::class)]
-    private Collection $menus;
-
-    public function __construct()
-    {
-        $this->users = new ArrayCollection();
-        $this->menus = new ArrayCollection();
-    }
-
-
-
+    private Collection $menu;
 
     /**
      * @return int|null
@@ -50,32 +41,75 @@ class Restaurant
 
     /**
      * @param int|null $nb_couverts
+     * @return Restaurant
      */
-    public function setNbCouverts(?int $nb_couverts): void
+    public function setNbCouverts(?int $nb_couverts): Restaurant
     {
         $this->nb_couverts = $nb_couverts;
+        return $this;
     }
 
+    #[ORM\OneToMany(mappedBy: 'restaurant', targetEntity: Reservation::class)]
+    private Collection $reservations;
+
     /**
-     * @return int|null
+     * Constructor
      */
-    public function getId(): ?int
+    public function __construct()
     {
-        return $this->id;
+        $this->users = new ArrayCollection();
+        $this->menu = new ArrayCollection();
+        $this->reservations = new ArrayCollection();
+    }
+
+    
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setRestaurant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->contains($reservation)) {
+            $this->reservations->removeElement($reservation);
+            if ($reservation->getRestaurant() === $this) {
+                $reservation->setRestaurant(null);
+            }
+        }
+
+        return $this;
     }
 
     /**
      * @param int|null $id
      */
-    public function setId(?int $id): void
+    function setId(?int $id): void
     {
         $this->id = $id;
     }
 
     /**
+     * @return int|null
+     */
+    function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
      * @return string|null
      */
-    public function getName(): ?string
+    function getName(): ?string
     {
         return $this->name;
     }
@@ -83,7 +117,7 @@ class Restaurant
     /**
      * @param string|null $name
      */
-    public function setName(?string $name): void
+    function setName(?string $name): void
     {
         $this->name = $name;
     }
@@ -91,61 +125,24 @@ class Restaurant
     /**
      * @return Collection<int, User>
      */
-    public function getUsers(): Collection
+    function getUsers(): Collection
     {
         return $this->users;
     }
 
-    public function addUser(User $user): self
+    /**
+     * @return Collection
+     */
+    public function getMenu(): Collection
     {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->setRestaurant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            // set the owning side to null (unless already changed)
-            if ($user->getRestaurant() === $this) {
-                $user->setRestaurant(null);
-            }
-        }
-
-        return $this;
+        return $this->menu;
     }
 
     /**
-     * @return Collection<int, Menu>
+     * @param Collection $menu
      */
-    public function getMenus(): Collection
+    public function setMenu(Collection $menu): void
     {
-        return $this->menus;
+        $this->menu = $menu;
     }
-
-    public function addMenu(Menu $menu): self
-    {
-        if (!$this->menus->contains($menu)) {
-            $this->menus->add($menu);
-            $menu->setRestaurant($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMenu(Menu $menu): self
-    {
-        if ($this->menus->removeElement($menu)) {
-            // set the owning side to null (unless already changed)
-            if ($menu->getRestaurant() === $this) {
-                $menu->setRestaurant(null);
-            }
-        }
-
-        return $this;
-    }
-
 }

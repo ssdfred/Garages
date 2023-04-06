@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\ReservationRepository;
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -21,22 +20,54 @@ class Reservation
     #[ORM\Column(type: 'integer')]
     private ?int $nb_personnes = null;
 
-    /**
-     * @Assert\NotNull()
-     * @Assert\Type("\DateTimeInterface")
-     * @ORM\Column(type: 'datetime')
-     */
-    private ?DateTime $date = null;
+    #[ORM\Column(type: 'integer')]
+    private ?int $place_restante = null;
 
-    /**
-     * @Assert\NotNull()
-     * @Assert\Type("\DateTimeInterface")
-     * @ORM\Column(type: 'datetime')
-     */
-    private ?DateTime $reservation_heure = null;
+    #[ORM\Column(type: 'datetime')]
+    private ?\DateTime $date = null;
+
+    #[ORM\Column(type: 'time')]
+    #[Assert\NotBlank]
+    #[Assert\Time]
+    private  ?\DateTime $reservation_heure;
 
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $allergie = null;
+
+    #[ORM\ManyToOne(targetEntity: Restaurant::class , inversedBy: 'reservations')]
+    private ?Restaurant $restaurant;
+
+    #[ORM\Column(type: 'integer')]
+    private ?int $nb_couverts;
+
+    public function __construct()
+    {
+        $this->reservation_heure = new \DateTime();
+    }
+
+    public function getRestaurant(): ?Restaurant
+    {
+        return $this->restaurant;
+    }
+
+    public function setRestaurant(?Restaurant $restaurant): self
+    {
+        $this->restaurant = $restaurant;
+
+        return $this;
+    }
+
+    public function getNbCouverts(): ?int
+    {
+        return $this->nb_couverts;
+    }
+
+    public function setNbCouverts(int $nb_couverts): self
+    {
+        $this->nb_couverts = $nb_couverts;
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -67,36 +98,51 @@ class Reservation
         return $this;
     }
 
-    public function getDate(): ?DateTime
+    public function getPlaceRestante(): ?int
+    {
+        return $this->place_restante;
+    }
+
+    public function setPlaceRestante(?int $place_restante): self
+    {
+        $this->place_restante = $place_restante;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTime
     {
         return $this->date;
     }
 
-    public function setDate(?DateTime $date): self
+    public function setDate(?\DateTime $date): self
     {
         $this->date = $date;
 
         return $this;
     }
 
-    public function getReservationHeure(): ?DateTime
+    public function getReservationHeure(): ?\DateTimeInterface
     {
         return $this->reservation_heure;
     }
 
-    public function setReservationHeure(?DateTime $reservation_heure): self
-    {
-        $this->reservation_heure = $reservation_heure;
-
-        return $this;
-    }
-
-    public function getAllergie(): ?string
+    /**
+     * Get the value of allergie
+     */ 
+    public function getAllergie()
     {
         return $this->allergie;
     }
 
-    public function setAllergie(?string $allergie): self
+   
+
+    /**
+     * Set the value of allergie
+     *
+     * @return  self
+     */ 
+    public function setAllergie($allergie)
     {
         $this->allergie = $allergie;
 

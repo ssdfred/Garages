@@ -9,6 +9,24 @@ const togglePassword = () => {
     eyeSlashIcon.classList.contains("d-none") ? eyeSlashIcon.classList.remove("d-none") : eyeSlashIcon.classList.add("d-none")
 }
 
-
+function updateAvailableSeats() {
+    // Envoie une requête AJAX pour interroger le backend sur le nombre de places disponibles
+    $.ajax({
+      url: '/api/available-seats',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        // Met à jour la valeur du compteur avec le nombre de places disponibles retourné
+        $('#available-seats-counter').text(data.availableSeats);
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log(textStatus, errorThrown);
+      }
+    });
+  }
+  
+  // Exécute la fonction `updateAvailableSeats` toutes les 5 secondes
+  setInterval(updateAvailableSeats, 5000);
+  
 
 

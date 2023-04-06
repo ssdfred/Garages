@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Calcul de la réservation</h1>
+
+    <p>Restaurant : {{ reservation.restaurant.nom }}</p>
+    <p>Date : {{ reservation.date|date('d/m/Y') }}</p>
+    <p>Heure : {{ reservation.reservation_heure|date('H:i') }}</p>
+    <p>Nombre de couverts : {{ reservation.nb_couverts }}</p>
+
+    {% if form is not null %}
+        {{ form_start(form) }}
+            <div class="form-group">
+                {{ form_label(form.nb_personnes, 'Nombre de personnes') }}
+                {{ form_widget(form.nb_personnes, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div class="form-group">
+                {{ form_label(form.message) }}
+                {{ form_widget(form.message, {'attr': {'class': 'form-control', 'readonly': true}}) }}
+            </div>
+            {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        {{ form_end(form) }}
+    {% endif %}
+{% endblock %}
